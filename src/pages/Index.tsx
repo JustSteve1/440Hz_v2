@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import VideoBackground from "../components/VideoBackground";
 import AnimatedText from "../components/AnimatedText";
 import ContactForm from "../components/ContactForm";
+import Navigation from "../components/Navigation";
 import { Button } from "../components/ui/button";
 import {
   Dialog,
@@ -20,6 +21,9 @@ const Index = () => {
     <div className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
       <VideoBackground />
+      
+      {/* Navigation Header */}
+      <Navigation />
       
       {/* Content Overlay */}
       <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center px-4">
