@@ -1,8 +1,8 @@
-
 import React from "react";
 import VideoBackground from "../components/VideoBackground";
 import AnimatedText from "../components/AnimatedText";
 import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 import { Button } from "../components/ui/button";
 
 const Index = () => {
@@ -169,6 +169,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
