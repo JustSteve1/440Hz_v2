@@ -1,67 +1,78 @@
 
 import React from "react";
-import { NavLink } from "react-router-dom";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import { Link } from "react-scroll";
 
 const Navigation = () => {
   return (
     <header className="absolute top-0 left-0 w-full p-4 z-10">
-      <NavigationMenu className="mx-auto max-w-screen-xl">
-        <NavigationMenuList className="gap-6">
-          <NavigationMenuItem>
-            <NavLink 
-              to="/services" 
-              className={({ isActive }) => `text-white hover:text-[#D6BCFA] transition-colors ${isActive ? "font-bold" : ""}`}
+      <nav className="mx-auto max-w-screen-xl">
+        <ul className="flex gap-6 justify-center">
+          <li>
+            <Link 
+              to="services" 
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               Services
-            </NavLink>
-          </NavigationMenuItem>
+            </Link>
+          </li>
           
-          <NavigationMenuItem>
-            <NavLink 
-              to="/about" 
-              className={({ isActive }) => `text-white hover:text-[#D6BCFA] transition-colors ${isActive ? "font-bold" : ""}`}
+          <li>
+            <Link 
+              to="about" 
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               About us
-            </NavLink>
-          </NavigationMenuItem>
+            </Link>
+          </li>
           
-          <NavigationMenuItem>
-            <NavLink 
-              to="/work" 
-              className={({ isActive }) => `text-white hover:text-[#D6BCFA] transition-colors ${isActive ? "font-bold" : ""}`}
+          <li>
+            <Link 
+              to="work" 
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               Our work
-            </NavLink>
-          </NavigationMenuItem>
+            </Link>
+          </li>
           
-          <NavigationMenuItem>
-            <NavLink 
-              to="/people" 
-              className={({ isActive }) => `text-white hover:text-[#D6BCFA] transition-colors ${isActive ? "font-bold" : ""}`}
+          <li>
+            <Link 
+              to="people" 
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               People
-            </NavLink>
-          </NavigationMenuItem>
+            </Link>
+          </li>
           
-          <NavigationMenuItem>
-            <NavLink 
-              to="/blog" 
-              className={({ isActive }) => `text-white hover:text-[#D6BCFA] transition-colors ${isActive ? "font-bold" : ""}`}
+          <li>
+            <Link 
+              to="blog" 
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               Blog & Insights
-            </NavLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };
