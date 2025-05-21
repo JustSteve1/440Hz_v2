@@ -1,9 +1,11 @@
+
 import React from "react";
 import VideoBackground from "../components/VideoBackground";
 import AnimatedText from "../components/AnimatedText";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { Button } from "../components/ui/button";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   // List of words to cycle through
@@ -84,12 +86,12 @@ const Index = () => {
                 & Scale with AI
               </p>
               <button className="font-semibold">
-                <a
-                  href="https://440hz.uk/marketing"
+                <Link
+                  to="/RAG"
                   className="text-gray-950 underline decoration-sky-400 underline-offset-3 hover:decoration-2 dark:text-white"
                 >
                   Find out more &rarr;
-                </a>
+                </Link>
               </button>
             </div>
             {/* Card 2 */}
