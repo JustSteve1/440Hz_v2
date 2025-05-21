@@ -1,6 +1,7 @@
 
 import React from "react";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
@@ -8,7 +9,7 @@ const Navigation = () => {
       <nav className="mx-auto max-w-screen-xl">
         <ul className="flex gap-6 justify-center">
           <li>
-            <Link 
+            <ScrollLink 
               to="services" 
               spy={true}
               smooth={true}
@@ -17,11 +18,11 @@ const Navigation = () => {
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               Services
-            </Link>
+            </ScrollLink>
           </li>
           
           <li>
-            <Link 
+            <ScrollLink 
               to="about" 
               spy={true}
               smooth={true}
@@ -30,11 +31,11 @@ const Navigation = () => {
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               About us
-            </Link>
+            </ScrollLink>
           </li>
           
           <li>
-            <Link 
+            <ScrollLink 
               to="work" 
               spy={true}
               smooth={true}
@@ -43,11 +44,11 @@ const Navigation = () => {
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               Our work
-            </Link>
+            </ScrollLink>
           </li>
           
           <li>
-            <Link 
+            <ScrollLink 
               to="people" 
               spy={true}
               smooth={true}
@@ -56,11 +57,11 @@ const Navigation = () => {
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               People
-            </Link>
+            </ScrollLink>
           </li>
           
           <li>
-            <Link 
+            <ScrollLink 
               to="blog" 
               spy={true}
               smooth={true}
@@ -69,7 +70,16 @@ const Navigation = () => {
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
               Blog & Insights
-            </Link>
+            </ScrollLink>
+          </li>
+          
+          <li>
+            <RouterLink 
+              to="/RAG"
+              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
+            >
+              RAG
+            </RouterLink>
           </li>
         </ul>
       </nav>
