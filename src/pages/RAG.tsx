@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Send } from "lucide-react";
+import { toast } from "sonner";
 
 const RAG = () => {
   const [showChat, setShowChat] = useState(false);
@@ -14,6 +15,25 @@ const RAG = () => {
   const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState<{role: string, content: string}[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  
+  // Set API key on component mount
+  useEffect(() => {
+    // Get API key from localStorage if available, otherwise use default
+    const savedApiKey = localStorage.getItem('gemini-api-key');
+    if (savedApiKey) {
+      setApiKey(savedApiKey);
+    } else {
+      // Using a placeholder that will be replaced when user enters their key
+      setApiKey("Enter your API key");
+    }
+  }, []);
+  
+  // Save API key to localStorage when it changes
+  useEffect(() => {
+    if (apiKey && apiKey !== "Enter your API key") {
+      localStorage.setItem('gemini-api-key', apiKey);
+    }
+  }, [apiKey]);
 
   const handleSendMessage = async () => {
     if (!message.trim()) return;
@@ -28,7 +48,7 @@ const RAG = () => {
     setIsLoading(true);
     
     try {
-      if (!apiKey) {
+      if (!apiKey || apiKey === "Enter your API key") {
         setTimeout(() => {
           setChatHistory([
             ...newChatHistory,
@@ -88,6 +108,7 @@ const RAG = () => {
           }
         ]);
         console.error("API response error:", data);
+        toast.error("Failed to get response. Please check your API key.");
       }
     } catch (error) {
       console.error("Error calling Gemini API:", error);
@@ -98,6 +119,7 @@ const RAG = () => {
           content: "An error occurred while contacting the Gemini API. Please check your connection and API key." 
         }
       ]);
+      toast.error("Connection error. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -118,15 +140,15 @@ const RAG = () => {
   `;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1A1F2C] to-[#2d3748] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#1A1F2C] to-[#2d3748] text-white"
+         style={{
+           backgroundImage: `url("/lovable-uploads/7a26fa73-69fd-4395-a013-10655aa7db60.png")`,
+           backgroundSize: "cover",
+           backgroundPosition: "center",
+           backgroundRepeat: "no-repeat",
+         }}>
       <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          <span className="bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] bg-clip-text text-transparent">
-            RAG Platform
-          </span>
-        </h1>
-
-        <div className="max-w-4xl mx-auto bg-[#2a2f3d]/80 backdrop-blur-lg rounded-xl shadow-lg p-6">
+        <div className="max-w-3xl mx-auto bg-[#2a2f3d]/60 backdrop-blur-lg rounded-xl shadow-lg p-6 mt-12">
           <div className="flex items-center justify-center space-x-4 mb-8">
             <Label htmlFor="show-chat" className={`text-lg ${!showChat ? "text-[#D6BCFA] font-medium" : ""}`}>
               Terms of Use
@@ -152,10 +174,8 @@ const RAG = () => {
             </div>
           ) : (
             <div className="animate-fade-in">
-              <Card className="bg-[#1e212b]/80 border-[#3d4155]">
+              <Card className="bg-[#1e212b]/70 border-[#3d4155]">
                 <CardContent className="pt-6">
-                  <h2 className="text-2xl font-semibold mb-4 text-center text-[#D6BCFA]">Gemini Chat Assistant</h2>
-                  
                   <div className="mb-4">
                     <Label htmlFor="api-key" className="text-sm text-gray-300 mb-1 block">
                       Google Gemini API Key
@@ -169,11 +189,11 @@ const RAG = () => {
                       className="bg-[#2a2f3d] border-[#3d4155] text-white"
                     />
                     <p className="text-xs text-gray-400 mt-1">
-                      Get your API key from the <a href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-[#9b87f5] hover:underline">Google AI Studio</a>
+                      Your API key is stored locally in your browser.
                     </p>
                   </div>
                   
-                  <div className="bg-[#262a36] rounded-lg h-80 overflow-y-auto mb-4 p-4">
+                  <div className="bg-[#262a36]/80 rounded-lg h-60 overflow-y-auto mb-4 p-4">
                     {chatHistory.length === 0 ? (
                       <div className="h-full flex items-center justify-center text-gray-400">
                         <p>Start a conversation with the Gemini assistant</p>
@@ -185,7 +205,7 @@ const RAG = () => {
                             key={index} 
                             className={`p-3 rounded-lg ${
                               msg.role === "user" 
-                                ? "bg-[#3d4155] ml-8" 
+                                ? "bg-[#3d4155]/80 ml-8" 
                                 : "bg-[#9b87f5]/20 mr-8"
                             }`}
                           >
@@ -216,7 +236,7 @@ const RAG = () => {
                           handleSendMessage();
                         }
                       }}
-                      className="bg-[#2a2f3d] border-[#3d4155] text-white resize-none"
+                      className="bg-[#2a2f3d]/80 border-[#3d4155] text-white resize-none"
                       rows={2}
                     />
                     <Button 
