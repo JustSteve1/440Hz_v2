@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   Dialog,
@@ -24,7 +23,10 @@ interface ContactFormDialogProps {
 const contactSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
-  message: z.string().min(1, { message: "Message is required" }).max(500, { message: "Message must be 500 words or less" })
+  message: z
+    .string()
+    .min(1, { message: "Message is required" })
+    .max(500, { message: "Message must be 500 words or less" }),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -42,14 +44,17 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    
+
     // For message field, limit to 500 words
-    if (name === "message" && value.split(/\s+/).filter(word => word.length > 0).length > 500) {
+    if (
+      name === "message" &&
+      value.split(/\s+/).filter((word) => word.length > 0).length > 500
+    ) {
       return;
     }
-    
+
     setFormData((prev) => ({ ...prev, [name]: value }));
-    
+
     // Clear the error for this field when user starts typing again
     if (errors[name as keyof ContactFormValues]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -77,7 +82,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -91,14 +96,15 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       );
       const mailtoLink = `mailto:info@440hz.uk?subject=${subject}&body=${body}`;
-      
+
       // Open email client
       window.location.href = mailtoLink;
-      
+
       toast.success("Email client opened!", {
-        description: "Your default email application should now be open with the message ready to send.",
+        description:
+          "Your default email application should now be open with the message ready to send.",
       });
-      
+
       // Reset form and close dialog
       setFormData({ name: "", email: "", message: "" });
       onOpenChange(false);
@@ -112,18 +118,20 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
     }
   };
 
-  const wordCount = formData.message.split(/\s+/).filter(word => word.length > 0).length;
+  const wordCount = formData.message
+    .split(/\s+/)
+    .filter((word) => word.length > 0).length;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Get in Touch</DialogTitle>
+          <DialogTitle>Coming Soon - Get in Touch</DialogTitle>
           <DialogDescription>
             Send us a message and we'll get back to you as soon as possible.
           </DialogDescription>
         </DialogHeader>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="grid gap-2">
             <Label htmlFor="name">Name</Label>
@@ -178,16 +186,16 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
           </div>
 
           <div className="flex justify-end gap-2 pt-2">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={() => onOpenChange(false)}
               type="button"
               disabled={isSubmitting}
             >
               Cancel
             </Button>
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={isSubmitting}
               className="bg-[#9b87f5] hover:bg-[#D6BCFA]"
             >
