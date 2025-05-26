@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
@@ -9,21 +8,21 @@ const Navigation = () => {
       <nav className="mx-auto max-w-screen-xl">
         <ul className="flex gap-6 justify-center">
           <li>
-            <ScrollLink 
-              to="services" 
+            <ScrollLink
+              to="services"
               spy={true}
               smooth={true}
               offset={-70}
               duration={500}
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
-              Services
+              Our Services
             </ScrollLink>
           </li>
-          
+
           <li>
-            <ScrollLink 
-              to="about" 
+            <ScrollLink
+              to="about"
               spy={true}
               smooth={true}
               offset={-70}
@@ -33,53 +32,18 @@ const Navigation = () => {
               About us
             </ScrollLink>
           </li>
-          
+
           <li>
-            <ScrollLink 
-              to="work" 
+            <ScrollLink
+              to="work"
               spy={true}
               smooth={true}
               offset={-70}
               duration={500}
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
-              Our work
+              Our Work
             </ScrollLink>
-          </li>
-          
-          <li>
-            <ScrollLink 
-              to="people" 
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
-            >
-              People
-            </ScrollLink>
-          </li>
-          
-          <li>
-            <ScrollLink 
-              to="blog" 
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
-            >
-              Blog & Insights
-            </ScrollLink>
-          </li>
-          
-          <li>
-            <RouterLink 
-              to="/RAG"
-              className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
-            >
-              RAG
-            </RouterLink>
           </li>
         </ul>
       </nav>
