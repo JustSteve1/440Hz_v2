@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import VideoBackground from "../components/VideoBackground";
 import AnimatedText from "../components/AnimatedText";
@@ -7,10 +6,15 @@ import Footer from "../components/Footer";
 import ContactFormDialog from "../components/ContactFormDialog";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
+import {
+  FaBolt as Zap,
+  FaUsers as Users,
+  FaStar as Star,
+} from "react-icons/fa";
 
 const Index = () => {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
-  
+
   // List of words to cycle through
   const wordsList = [
     "Strategy",
@@ -33,7 +37,7 @@ const Index = () => {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden">
       {/* Hero Section with Video Background */}
-      <div className="relative h-screen w-full overflow-hidden">
+      <div className="relative h-screen w-full overflow-hidden p-8">
         {/* Video Background */}
         <VideoBackground />
 
@@ -65,110 +69,84 @@ const Index = () => {
         id="about"
         className="min-h-screen text-center bg-gray-100 py-10 px-4"
       >
-        <div className="container mx-auto">
-          <h2 className="text-6xl font-bold mb-8 text-center">About Us</h2>
-          <div className="max-w-4xl mx-auto">
-            <p className="text-2xl font-bold  mb-8 ">
-              We're on a mission to do real things with AI
-            </p>
-            <p className="text-lg mb-6">
-              At our core we're a technology company that see's the disruptive
-              potential of GenAI enabled Technology. We believe that AI
-              technology is demonstrated through prototypes
-            </p>
-            <p className="text-lg mb-6">
-              We're currently working on a few Prototypes accross industries -
-              see below - if this interests you, reach out, we'd love to show
-              you more
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="min-h-screen bg-blue-900 py-40 px-15">
-        <div className="container mx-auto">
-          <h2 className="text-6xl text-center text-white font-medium mb-8 justify-centre">
-            What we do
-          </h2>
-          <p className="text-2xl font-bold text-white text-regular max-w-3xl mx-auto text-center mb-12">
-            Prototypes for:
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl shadow hover:shadow-lg transition-shadow flex flex-col items-center text-center">
-              <div className="w-20 h-20 bg-gray-200 rounded-full mb-4 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">
-                  <img src="public/Openai_logo.jpg" alt="OpenAI Logo" />
-                </span>
-              </div>
-              <h3 className="text-lg font-semibold mb-3">Content Creation</h3>
-              <p className="text-gray-600 mb-4">
-                Creating Personalised Sales & Marketing content at Scale, with
-                OpenAI
+        {/* Features Section */}
+        <section className="py-20 px-4 bg-white">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold mb-6 text-gray-900">
+                Agentic App Development
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Transform your content strategy with cutting-edge AI technology
+                that understands your brand and delivers results.
               </p>
-              <button className="font-semibold">
-                <Link
-                  to="/content"
-                  className="text-gray-950 underline decoration-sky-400 underline-offset-3 hover:decoration-2 dark:text-white"
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-purple-100">
+                <div className="w-16 h-16 bg-[#9b87f5] rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                  Content
+                </h3>
+                <p className="text-gray-600 mt-2 mb-4">
+                  Personalised Content Generation
+                </p>
+                <button className="mt-auto p-2 border-12 bg-gray-800 text-white rounded-lg hover:bg-gray-400 transition-colors cursor-pointer">
+                  <Link
+                    to="/content"
+                    className="text-white underline-offset-3 hover:decoration-2"
+                  >
+                    Learn More <span className="ml-2">&rarr;</span>
+                  </Link>
+                </button>
+              </div>
+
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                  Analytics
+                </h3>
+                <p className="text-gray-600 mb-4">Sales Funnel Analytics </p>
+                <button
+                  className="mt-auto p-2 border-12 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
+                  onClick={handleComingSoonClick}
                 >
-                  Find out more &rarr;
-                </Link>
-              </button>
-            </div>
-            
-            {/* Card 2 */}
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl shadow hover:shadow-lg transition-shadow flex flex-col items-center text-center">
-              <div className="w-20 h-20 bg-gray-200 rounded-full mb-4 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">
-                  <img src="public/Claude.jpg" alt="OpenAI Logo" />
-                </span>
+                  {" Learn More"}
+                  <span className="ml-2">&rarr;</span>
+                </button>
               </div>
-              <h3 className="text-lg font-semibold mb-3">
-                Sales Funnel Analytics
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Measuring the effectiveness of your sales funnel with Google AI
-                Products
-              </p>
-              <button 
-                className="mt-auto px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
-                onClick={handleComingSoonClick}
-              >
-                Coming soon
-              </button>
-            </div>
-            
-            {/* Card 3 */}
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl shadow hover:shadow-lg transition-shadow flex flex-col items-center text-center">
-              <div className="w-20 h-20 bg-gray-200 rounded-full mb-4 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">
-                  <img src="public/Grok.jpg" alt="OpenAI Logo" />
-                </span>
+
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-emerald-50 border border-green-100">
+                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Star className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                  Code Gen
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Automated Front-end for .tsx
+                </p>
+                <button
+                  className="mt-auto p-2 border-12 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
+                  onClick={handleComingSoonClick}
+                >
+                  {" Learn More"}
+                  <span className="ml-2">&rarr;</span>
+                </button>
               </div>
-              <h3 className="text-lg font-semibold mb-3">
-                Automated Front-end Design
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Gen-AI enabled front-end Design, automatically generated
-                TypeScript from images
-              </p>
-              <button 
-                className="mt-auto px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
-                onClick={handleComingSoonClick}
-              >
-                Coming soon
-              </button>
             </div>
           </div>
-        </div>
+        </section>
       </section>
 
       {/* Contact Form Dialog */}
-      <ContactFormDialog 
-        open={isContactDialogOpen} 
-        onOpenChange={setIsContactDialogOpen} 
+      <ContactFormDialog
+        open={isContactDialogOpen}
+        onOpenChange={setIsContactDialogOpen}
       />
 
       {/* Footer */}

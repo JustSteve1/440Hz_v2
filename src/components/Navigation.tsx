@@ -16,7 +16,7 @@ const Navigation = () => {
               duration={500}
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
-              Our Services
+              Services
             </ScrollLink>
           </li>
 
@@ -42,7 +42,7 @@ const Navigation = () => {
               duration={500}
               className="text-white hover:text-[#D6BCFA] cursor-pointer transition-colors"
             >
-              Our Work
+              Work
             </ScrollLink>
           </li>
         </ul>
