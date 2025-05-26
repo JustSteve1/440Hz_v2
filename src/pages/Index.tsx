@@ -110,13 +110,14 @@ const Index = () => {
               </p>
               <button className="font-semibold">
                 <Link
-                  to="/RAG"
+                  to="/content"
                   className="text-gray-950 underline decoration-sky-400 underline-offset-3 hover:decoration-2 dark:text-white"
                 >
                   Find out more &rarr;
                 </Link>
               </button>
             </div>
+            
             {/* Card 2 */}
             <div className="bg-white border border-gray-200 p-6 rounded-2xl shadow hover:shadow-lg transition-shadow flex flex-col items-center text-center">
               <div className="w-20 h-20 bg-gray-200 rounded-full mb-4 flex items-center justify-center">
@@ -138,6 +139,7 @@ const Index = () => {
                 Coming soon
               </button>
             </div>
+            
             {/* Card 3 */}
             <div className="bg-white border border-gray-200 p-6 rounded-2xl shadow hover:shadow-lg transition-shadow flex flex-col items-center text-center">
               <div className="w-20 h-20 bg-gray-200 rounded-full mb-4 flex items-center justify-center">
