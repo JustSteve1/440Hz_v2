@@ -1,12 +1,16 @@
-import React from "react";
+
+import React, { useState } from "react";
 import VideoBackground from "../components/VideoBackground";
 import AnimatedText from "../components/AnimatedText";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import ContactFormDialog from "../components/ContactFormDialog";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
 
 const Index = () => {
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
+  
   // List of words to cycle through
   const wordsList = [
     "Strategy",
@@ -18,15 +22,12 @@ const Index = () => {
     "Innovation",
   ];
 
-  // Email configuration
-  const emailAddress = "info@440hz.uk";
-  const emailSubject = "Get in Touch";
-
   const handleContactClick = () => {
-    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
-      emailSubject
-    )}`;
-    window.location.href = mailtoLink;
+    setIsContactDialogOpen(true);
+  };
+
+  const handleComingSoonClick = () => {
+    setIsContactDialogOpen(true);
   };
 
   return (
@@ -130,7 +131,10 @@ const Index = () => {
                 Measuring the effectiveness of your sales funnel with Google AI
                 Products
               </p>
-              <button className="mt-auto px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors">
+              <button 
+                className="mt-auto px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
+                onClick={handleComingSoonClick}
+              >
                 Coming soon
               </button>
             </div>
@@ -148,13 +152,22 @@ const Index = () => {
                 Gen-AI enabled front-end Design, automatically generated
                 TypeScript from images
               </p>
-              <button className="mt-auto px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors">
+              <button 
+                className="mt-auto px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
+                onClick={handleComingSoonClick}
+              >
                 Coming soon
               </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Contact Form Dialog */}
+      <ContactFormDialog 
+        open={isContactDialogOpen} 
+        onOpenChange={setIsContactDialogOpen} 
+      />
 
       {/* Footer */}
       <Footer />
