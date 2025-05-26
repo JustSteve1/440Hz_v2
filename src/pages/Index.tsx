@@ -50,7 +50,7 @@ const Index = () => {
             </h1>
 
             <Button
-              className="mt-8 bg-[#9b87f5] hover:bg-[#D6BCFA] text-white px-6 py-2 rounded-md text-lg transition-all hover:shadow-lg hover:shadow-black/20"
+              className="mt-8 bg-black text-white rounded-lg px-6 py-2 text-lg transition-all hover:shadow-lg hover:bg-gray-800"
               onClick={handleContactClick}
             >
               Get in Touch
@@ -62,10 +62,12 @@ const Index = () => {
       {/* About Section */}
       <section
         id="about"
-        className="min-h-screen text-center bg-gray-100 py-10 px-4"
+        className="min-h-screen text-center bg-gray-100 py-5 px-5"
       >
         <div className="container mx-auto">
-          <h2 className="text-6xl font-bold mb-8 text-center">About Us</h2>
+          <h2 className="pt-20 text-6xl font-bold mb-8 text-center">
+            About Us
+          </h2>
           <div className="max-w-4xl mx-auto">
             <p className="text-2xl font-bold  mb-8 ">
               We're on a mission to do real things with AI
@@ -90,9 +92,7 @@ const Index = () => {
           <h2 className="text-6xl text-center text-white font-medium mb-8 justify-centre">
             What we do
           </h2>
-          <p className="text-2xl font-bold text-white text-regular max-w-3xl mx-auto text-center mb-12">
-            Prototypes for:
-          </p>
+          <p className="text-2xl font-bold text-white text-regular max-w-3xl mx-auto text-center mb-12"></p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1 */}
@@ -131,7 +131,7 @@ const Index = () => {
                 Products
               </p>
               <button className="mt-auto px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors">
-                Coming soon
+                Find out more &rarr;
               </button>
             </div>
             {/* Card 3 */}
